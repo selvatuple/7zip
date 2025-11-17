@@ -10,51 +10,47 @@
 flowchart TD
 
 subgraph "1. User Interfaces"
-        A[GUI File Manager<br>(App.cpp, App.h)]
-        B[Console Application<br>(Main.cpp, 7zMain.c)]
+ A["GUI File Manager (App.cpp, App.h)"]
+ B["Console Application (Main.cpp, 7zMain.c)"]
 
 end
-
 
 subgraph "2. Application Core"
-        C[Orchestration & UI Logic<br>(Command Parsing, File Ops)]
+ C["Orchestration & UI Logic (Command Parsing, File Ops)"]
 
 end
-
 
 subgraph "3. Archive Format API"
-        D[7-Zip Archive Handler<br>(7z.h, 7zDec.c)]
+ D["7-Zip Archive Handler (7z.h, 7zDec.c)"]
 
 end
-
 
 subgraph "4. Codec & Filter Library"
-        E[LZMA / LZMA2 Codecs<br>(LzmaEnc.c, LzmaDec.c, Lzma2Enc.c)]
-        F[Other Codecs & Filters<br>(PPMd, BCJ2)]
+ E["LZMA / LZMA2 Codecs (LzmaEnc.c, LzmaDec.c, Lzma2Enc.c)"]
+ F["Other Codecs & Filters (PPMd, BCJ2)"]
 
 end
 
-
 subgraph "5. Platform Abstraction & System Services"
-        G[System Wrappers<br>(NWindows, NFile, NSystem)]
-        H[OS-Specific APIs<br>(Windows API, POSIX)]
+ G["System Wrappers (NWindows, NFile, NSystem)"]
+ H["OS-Specific APIs (Windows API, POSIX)"]
 
 end
 A -- User
-Interaction  -->  C
+Interaction --> C
 B -- User
-Interaction  -->  C
+Interaction --> C
 C -- Uses Archive
-API  -->  D
+API --> D
 D --
-Invokes  -->  E
+Invokes --> E
 D --
-Invokes  -->  F
+Invokes --> F
 C -. File/System Calls .-> G
 D -. Stream I/O .-> G
 E -. Memory/Threading .-> G
 G --
-Abstracts  -->  H
+Abstracts --> H
 ```
 
 ## Overview
