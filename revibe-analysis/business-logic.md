@@ -14,15 +14,15 @@ Provides both a console and a graphical user interface for users to interact wit
 
 ```mermaid
 flowchart TD
-A("Start Application") --> B{"UI Mode?"}
-B --> |GUI| C["Initialize File Manager Window"]
-B --> |Console| D["Parse Command-Line Arguments"]
-C --> E["Process User Action ("e.g., Copy, Extract")"]
-D --> F["Execute Command ("Add, List, etc.")"]
-E --> G{"Invoke Core Archive Operation"}
-F --> G
-G --> H["Report Progress via UI/Console Callbacks"]
-H --> I(("Exit"))
+A("Start Application")  -->  B{"UI Mode?"}
+B  --> |GUI| C["Initialize File Manager Window"]
+B  --> |Console| D["Parse Command-Line Arguments"]
+C  -->  E["Process User Action ('e.g., Copy, Extract')"]
+D  -->  F["Execute Command ('Add, List, etc.')"]
+E  -->  G{"Invoke Core Archive Operation"}
+F  -->  G
+G  -->  H["Report Progress via UI/Console Callbacks"]
+H  -->  I(("Exit"))
 ```
 
 **Insights:**
@@ -40,14 +40,14 @@ Implements the fundamental compression and decompression algorithms used by 7-Zi
 
 ```mermaid
 flowchart TD
-A["Start"] --> B{"Compress or Decompress?"}
-B --> |Compress| C["Set & Normalize Properties"]
-C --> D["Encode Data using LZMA/LZMA2 Engine"]
-D --> E(["Compressed Archive"])
-B --> |Decompress| F["Read Archive Headers"]
-F --> G{"Dispatch to Correct Decoder"}
-G --> H["Decode Data Stream via Range Coding"]
-H --> I(["Original Data"])
+A["Start"]  -->  B{"Compress or Decompress?"}
+B  --> |Compress| C["Set & Normalize Properties"]
+C  -->  D["Encode Data using LZMA/LZMA2 Engine"]
+D  -->  E("['Compressed Archive']")
+B  --> |Decompress| F["Read Archive Headers"]
+F  -->  G{"Dispatch to Correct Decoder"}
+G  -->  H["Decode Data Stream via Range Coding"]
+H  -->  I("['Original Data']")
 ```
 
 **Insights:**
@@ -65,13 +65,13 @@ Provides the necessary API and data structures for creating and interacting with
 
 ```mermaid
 flowchart TD
-A["Start: Open .7z File"] --> B["Parse Archive Header & Metadata into CSzArEx struct"]
-B --> C{"Select a File to Extract"}
-C --> D["Map Logical File to a Compressed 'Folder'"]
-D --> E["Locate Folder's Compressed Data Stream in Archive"]
-E --> F["Decode Folder via Coder Pipeline ("SzAr_DecodeFolder")"]
-F --> G["Extract File Bytes from Uncompressed Folder Stream"]
-G --> H["End: File Extracted"]
+A["Start: Open .7z File"]  -->  B["Parse Archive Header & Metadata into CSzArEx struct"]
+B  -->  C{"Select a File to Extract"}
+C  -->  D["Map Logical File to a Compressed 'Folder'"]
+D  -->  E["Locate Folder's Compressed Data Stream in Archive"]
+E  -->  F["Decode Folder via Coder Pipeline ('SzAr_DecodeFolder')"]
+F  -->  G["Extract File Bytes from Uncompressed Folder Stream"]
+G  -->  H["End: File Extracted"]
 ```
 
 **Insights:**
@@ -88,14 +88,14 @@ Handles the compilation and linking process for different components of the 7-Zi
 
 ```mermaid
 flowchart TD
-A["Start: Invoke 'make'"] --> B["Top-level makefile reads subdirectories"]
-B --> C["Recursively build each subdirectory"]
-C --> D["Sub-makefile loads component configuration"]
-D --> E{"Set preprocessor flags?\n("e.g., EXTRACT_ONLY")"}
-E --> F["Include shared build rules (".mak files")"]
-F --> G["Compile sources (".c, .asm") to object files (".obj")"]
-G --> H["Link object files into final executable"]
-H --> I["End: Executable created"]
+A["Start: Invoke 'make'"]  -->  B["Top-level makefile reads subdirectories"]
+B  -->  C["Recursively build each subdirectory"]
+C  -->  D["Sub-makefile loads component configuration"]
+D  -->  E{"Set preprocessor flags?\n("e.g., EXTRACT_ONLY")"}
+E  -->  F["Include shared build rules ('.mak files')"]
+F  -->  G["Compile sources ('.c, .asm') to object files ('.obj')"]
+G  -->  H["Link object files into final executable"]
+H  -->  I["End: Executable created"]
 ```
 
 **Insights:**
@@ -113,17 +113,17 @@ Provides a standalone, lightweight C-based utility specifically designed for ext
 
 ```mermaid
 flowchart TD
-A["Start Utility"] --> B["Receive Archive Path"]
-B --> C{"Arguments Valid?"}
-C --> |No| D["Print Usage & Exit"]
-C --> |Yes| E["Open & Parse Archive Metadata"]
-E --> F{"For Each Item in Archive"}
-F --> |Next Item| G{"Is item a file?"}
-G --> |Yes| H["Decompress & Write File"]
-H --> F
-G --> |No/Directory| I["Create Directory"]
-I --> F
-F --> |All Items Processed| J("Extraction Complete")
+A["Start Utility"]  -->  B["Receive Archive Path"]
+B  -->  C{"Arguments Valid?"}
+C  --> |No| D["Print Usage & Exit"]
+C  --> |Yes| E["Open & Parse Archive Metadata"]
+E  -->  F{"For Each Item in Archive"}
+F  --> |Next Item| G{"Is item a file?"}
+G  --> |Yes| H["Decompress & Write File"]
+H  -->  F
+G  --> |No/Directory| I["Create Directory"]
+I  -->  F
+F  --> |All Items Processed| J("Extraction Complete")
 ```
 
 **Insights:**

@@ -27,7 +27,7 @@ Features available on Revibe:
 
 ## 📖 About This Documentation
 
-- **Generated**: 2025-11-17
+- **Generated**: 2025-11-18
 - **Platform**: [Revibe](https://app.revibe.codes)
 - **Original Project**: https://github.com/ip7z/7zip
 
