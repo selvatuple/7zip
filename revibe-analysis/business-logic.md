@@ -91,7 +91,7 @@ flowchart TD
 A["Start: Invoke 'make'"]  -->  B["Top-level makefile reads subdirectories"]
 B  -->  C["Recursively build each subdirectory"]
 C  -->  D["Sub-makefile loads component configuration"]
-D  -->  E{"Set preprocessor flags?\n("e.g., EXTRACT_ONLY")"}
+D  -->  E{"Set preprocessor flags?\n('e.g., EXTRACT_ONLY')"}
 E  -->  F["Include shared build rules ('.mak files')"]
 F  -->  G["Compile sources ('.c, .asm') to object files ('.obj')"]
 G  -->  H["Link object files into final executable"]
