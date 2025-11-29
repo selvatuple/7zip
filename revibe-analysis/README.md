@@ -9,7 +9,6 @@ This directory contains automatically generated documentation and analysis artif
 - **[Architecture Overview](./architecture-overview.md)** - Technical architecture and system design
 - **[Business Logic](./business-logic.md)** - Core business logic and module interactions
 - **[Concepts Used](./concepts-used.md)** - Programming concepts and patterns explained
-- **[Flows](./flows/)** - User interaction flows and sequence diagrams
 - **[Tech Stack Summary](./tech-stack-summary.md)** - Technology stack breakdown
 
 ## 🔗 Interactive Exploration
